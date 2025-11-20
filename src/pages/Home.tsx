@@ -1,7 +1,65 @@
+import {
+  BackgroundImage,
+  Box,
+  Container,
+  Title,
+  Text,
+  TextInput,
+  Group,
+  ActionIcon,
+} from "@mantine/core"
+import { IconSearch } from "@tabler/icons-react"
+import { Link } from "react-router-dom"
+
 export default function Home() {
+  const SearchButton = (
+    <ActionIcon variant="white" size="lg">
+      <IconSearch size={16} />
+    </ActionIcon>
+  )
   return (
-    <>
-      <h1>Homepage</h1>
-    </>
+    <Container miw="100%" p="0">
+      <BackgroundImage src="/background2.jpg" mih="50vh" p="xl">
+        <Title style={{ color: "white", lineHeight: 1.5 }}>
+          Akademien&shy;zentrum
+          <br />
+          digitale Lexikographie des Deutschen
+        </Title>
+        <Text fw="800" style={{ color: "white" }} pb="3em">
+          Forschen • Entwickeln • Verstehen
+        </Text>
+        <Group gap="xs" maw="24em">
+          <TextInput
+            rightSection={SearchButton}
+            flex={1}
+            placeholder="Wörterbücher durchsuchen..."
+          />
+        </Group>
+      </BackgroundImage>
+      <Box maw="800px" mx="auto" py="xl" px="md">
+        <Title order={2} pb="lg">
+          Über das ADL
+        </Title>
+        <Text pb="md">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+          deserunt animi dolorum eos autem facere soluta fuga id distinctio et
+          eveniet nostrum, quidem ea quae quisquam molestiae sint accusamus
+          harum.
+        </Text>
+        <Text pb="md">
+          Nostrum, minus pariatur recusandae, ea necessitatibus architecto
+          perferendis corrupti fugiat libero consequatur deleniti quos odio
+          eveniet nam voluptate ipsa hic, eaque quidem. Voluptatum iure
+          assumenda aliquam ipsam in esse explicabo.
+        </Text>
+        <Text pb="md">
+          Dignissimos eveniet sed suscipit quaerat excepturi alias aut velit
+          laudantium similique quidem enim, officia eaque quibusdam totam
+          perferendis fuga error unde consequuntur, illo ullam aspernatur nihil?
+          Id perferendis impedit dolorem.
+        </Text>
+        <Link to="/about">Mehr erfahren</Link>
+      </Box>
+    </Container>
   )
 }
