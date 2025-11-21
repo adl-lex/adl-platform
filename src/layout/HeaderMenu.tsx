@@ -1,8 +1,9 @@
 import { Burger, Group, UnstyledButton } from "@mantine/core"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import classes from "./MainLayout.module.css"
 import { AppRoute } from "../App"
 import AdlLogo from "./AdlLogo"
+import classNames from "classnames"
 
 export function HeaderMenu({
   routes,
@@ -13,6 +14,7 @@ export function HeaderMenu({
   opened: boolean
   toggle: () => void
 }) {
+  const location = useLocation()
   return (
     <Group h="100%" px="md">
       <Group
@@ -24,7 +26,9 @@ export function HeaderMenu({
           {routes.map(({ path, title }) => (
             <UnstyledButton
               key={path}
-              className={classes.control}
+              className={classNames(classes.control, {
+                [classes.active]: location.pathname === path,
+              })}
               component={Link}
               to={path}
             >
