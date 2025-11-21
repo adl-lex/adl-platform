@@ -1,5 +1,19 @@
-# Mantine Vite template
+# ADL Web-Interface
 
-Get started with the template by clicking `Use this template` button on the top of the page.
+A React-based web application for lexicographic research built with [Vite](https://vite.dev/) and
+[Mantine](https://mantine.dev/).
 
-[Documentation](https://mantine.dev/guides/vite/)
+## Setup
+
+After cloning the repository, run `npm install` to set up the dependencies.
+
+Optionally, for deploying the app, create a file named .env.local in the project root (next to
+vite.config.ts) and add the following line, replacing "..." with the URL of the LRZ VM.
+
+```sh
+VITE_VM_URL=...
+```
+
+## Starting the Development Server
+
+To run the app locally, execute `npm run dev`.
