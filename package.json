@@ -14,13 +14,15 @@
     "@mantine/hooks": "8.3.8",
     "@mantinex/mantine-logo": "^2.0.0",
     "@tabler/icons-react": "^3.35.0",
-    "@tanstack/react-query": "^5.90.10",
+    "@tanstack/react-query": "^5.90.11",
     "classnames": "^2.5.1",
+    "lodash": "^4.17.21",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.21",
     "@types/node": "^24.10.1",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
