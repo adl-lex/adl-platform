@@ -10,8 +10,8 @@
       var(--mantine-color-dark-6)
     );
   }
-}
 
-.active {
-  text-decoration: underline;
+  &.active {
+    text-decoration: underline;
+  }
 }
