@@ -1,9 +1,9 @@
-import { ActionIcon, Group, TextInput } from "@mantine/core"
+import { ActionIcon, Group, TextInput, GroupProps } from "@mantine/core"
 import { IconSearch } from "@tabler/icons-react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
-export default function SearchDisplay() {
+export default function LemmaSearchForm({ ...props }: GroupProps) {
   const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState("")
 
@@ -21,7 +21,7 @@ export default function SearchDisplay() {
   }
 
   return (
-    <Group component={"form"} onSubmit={handleSubmit}>
+    <Group component={"form"} onSubmit={handleSubmit} {...props}>
       <TextInput
         rightSection={SearchButton}
         flex={1}
