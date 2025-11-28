@@ -10,6 +10,7 @@ import Corpora from "./pages/Corpora"
 import Dictionaries from "./pages/Dictionaries"
 import Lab from "./pages/Lab"
 import SearchDisplay from "./pages/SearchDisplay"
+import Article from "./pages/Article"
 
 const queryClient = new QueryClient()
 
@@ -19,7 +20,7 @@ export type AppRoute = {
   title: string
 }
 
-const routes: AppRoute[] = [
+const toplevelRoutes: AppRoute[] = [
   { path: "/", Component: Home, title: "Startseite" },
   { path: "/search", Component: SearchDisplay, title: "Suche" },
   { path: "/dictionaries", Component: Dictionaries, title: "Wörterbücher" },
@@ -28,11 +29,17 @@ const routes: AppRoute[] = [
   { path: "/about", Component: About, title: "Über" },
 ]
 
+const subRoutes: AppRoute[] = [
+  { path: "/search/lemma/:id", Component: Article, title: "Suche" },
+]
+
+const routes = [...toplevelRoutes, ...subRoutes]
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider theme={theme} defaultColorScheme="light">
-        <MainLayout routes={routes}>
+        <MainLayout routes={toplevelRoutes}>
           <Routes>
             {routes.map(({ path, Component }) => (
               <Route key={path} path={path} element={<Component />} />
