@@ -23,6 +23,7 @@ export default function SearchDisplay() {
     queryKey: ["search", id],
     queryFn: () => searchLemma(id),
     enabled: !!id,
+    refetchOnWindowFocus: false,
   })
 
   return (
