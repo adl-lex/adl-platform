@@ -1,44 +1,75 @@
-import { BackgroundImage, Box, Container, Title, Text } from "@mantine/core"
-import { Link } from "react-router-dom"
+import {
+  BackgroundImage,
+  Box,
+  Container,
+  Title,
+  Text,
+  Anchor,
+} from "@mantine/core"
 import LemmaSearchForm from "../ui/LemmaSearchForm"
+import { NavLink } from "react-router-dom"
 
 export default function Home() {
   return (
     <Container miw="100%" p="0">
       <BackgroundImage src="/background.jpg" mih="50vh" p="xl">
         <Title style={{ color: "white", lineHeight: 1.2 }} py="sm">
-          Akademien&shy;zentrum
-          <br />
-          digitale Lexikographie des Deutschen
+          LexoTerm
         </Title>
         <Text fw="800" style={{ color: "white" }} pb="xl">
-          Forschen • Entwickeln • Vernetzen
+          Lexikographische Suche und Analyse
         </Text>
         <LemmaSearchForm gap="xs" maw="24em" />
       </BackgroundImage>
       <Box maw="800px" mx="auto" py="xl" px="md">
-        <Title order={2} pb="lg">
-          Über das ADL
-        </Title>
         <Text pb="md">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-          deserunt animi dolorum eos autem facere soluta fuga id distinctio et
-          eveniet nostrum, quidem ea quae quisquam molestiae sint accusamus
-          harum.
+          <Text fw="bold" span>
+            LexoTerm
+          </Text>{" "}
+          ist ein wissenschaftliches Wörterbuch- und Analysetool, welches
+          Forscherinnen und Forschern den Zugang zu einer breiten Palette von
+          lexikographischen Ressourcen des Deutschen bietet. Ein besonderes
+          Augenmerk liegt dabei auf historischen und Dialektwörterbüchern, die
+          von Expert:innen in verschiedenen Forschungsprojekten im gesamten
+          deutschen Sprachraum aufgebaut und gepflegt werden. Das Ziel von
+          LexoTerm ist es, eine intelligente Plattform zu schaffen, die durch
+          den Einsatz moderner Verfahren der Digital Humanities,
+          Computerlinguistik und KI den gesamtdeutschen Wortschatz auf eine
+          völlig neue Art und Weise zugänglich macht.
         </Text>
         <Text pb="md">
-          Nostrum, minus pariatur recusandae, ea necessitatibus architecto
-          perferendis corrupti fugiat libero consequatur deleniti quos odio
-          eveniet nam voluptate ipsa hic, eaque quidem. Voluptatum iure
-          assumenda aliquam ipsam in esse explicabo.
+          <Text fw="bold" span>
+            Die Daten
+          </Text>{" "}
+          der in LexoTerm eingebundenen{" "}
+          <Anchor component={NavLink} to="/dictionaries">
+            Wörterbücher
+          </Anchor>{" "}
+          und{" "}
+          <Anchor component={NavLink} to="/corpora">
+            Korpora
+          </Anchor>{" "}
+          stammen aus sorgfältig kuratierten Beständen aus einer Vielzahl
+          lexikographischer Projekte und bilden den Kern der Plattform, die als
+          Brücke und Knotenpunkt fungiert: LexoTerm vernetzt heterogene Quellen,
+          macht Querverweise sichtbar und öffnet neue Wege für empirische
+          Untersuchungen.
         </Text>
         <Text pb="md">
-          Dignissimos eveniet sed suscipit quaerat excepturi alias aut velit
-          laudantium similique quidem enim, officia eaque quibusdam totam
-          perferendis fuga error unde consequuntur, illo ullam aspernatur nihil?
-          Id perferendis impedit dolorem.
+          <Text fw="bold" span>
+            Der Name der Plattform
+          </Text>{" "}
+          ist ein Kofferwort aus den Begriffen “Lexikon” und “(Such-)Term” und
+          spielt auf{" "}
+          <Text span fs="italic">
+            exotherme
+          </Text>{" "}
+          Reaktionen an, d.h. Prozesse, die mehr Energie freisetzen als zuvor
+          hineingegeben wurde. In Analogie dazu soll die Plattform zu neuen
+          Erkenntnissen in der lexikographischen Forschung führen, indem sie den
+          Zugang zu umfangreichen Datenbeständen erleichtert und so die
+          Forschungsarbeit effizienter und produktiver gestaltet.
         </Text>
-        <Link to="/about">Mehr erfahren</Link>
       </Box>
     </Container>
   )
