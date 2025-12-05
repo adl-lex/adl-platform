@@ -14,7 +14,8 @@ Optionally, for deploying the app, create a file named .env.local in the project
 vite.config.ts) and set the following variables.
 
 ```sh
-VITE_VM_URL
+VITE_VM_URL   # host of the production server
+VITE_API_URL  # host of the api instance, e.g. http://127.0.0.1:8000
 ```
 
 ## Starting the Development Server
