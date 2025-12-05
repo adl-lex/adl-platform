@@ -9,22 +9,28 @@ import {
 import LemmaSearchForm from "../ui/LemmaSearchForm"
 import { NavLink } from "react-router-dom"
 
+function HeroSection() {
+  return (
+    <BackgroundImage
+      src="https://azlex.de/static/img/vis1.png"
+      mih="50vh"
+      p="xl"
+    >
+      <Title style={{ color: "white", lineHeight: 1.2 }} py="sm">
+        LexoTerm
+      </Title>
+      <Text fw="800" style={{ color: "white" }} pb="xl">
+        Lexikographische Suche und Analyse
+      </Text>
+      <LemmaSearchForm gap="xs" maw="24em" />
+    </BackgroundImage>
+  )
+}
+
 export default function Home() {
   return (
     <Container miw="100%" p="0">
-      <BackgroundImage
-        src="https://azlex.de/static/img/vis1.png"
-        mih="50vh"
-        p="xl"
-      >
-        <Title style={{ color: "white", lineHeight: 1.2 }} py="sm">
-          LexoTerm
-        </Title>
-        <Text fw="800" style={{ color: "white" }} pb="xl">
-          Lexikographische Suche und Analyse
-        </Text>
-        <LemmaSearchForm gap="xs" maw="24em" />
-      </BackgroundImage>
+      <HeroSection />
       <Box maw="800px" mx="auto" py="xl" px="md">
         <Text pb="md">
           <Text fw="bold" span>
