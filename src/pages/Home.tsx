@@ -12,7 +12,11 @@ import { NavLink } from "react-router-dom"
 export default function Home() {
   return (
     <Container miw="100%" p="0">
-      <BackgroundImage src="/background.jpg" mih="50vh" p="xl">
+      <BackgroundImage
+        src="https://azlex.de/static/img/vis1.png"
+        mih="50vh"
+        p="xl"
+      >
         <Title style={{ color: "white", lineHeight: 1.2 }} py="sm">
           LexoTerm
         </Title>
