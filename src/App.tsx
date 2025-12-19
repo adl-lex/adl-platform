@@ -12,6 +12,7 @@ import Lab from "./pages/Lab"
 import SearchDisplay from "./pages/SearchDisplay"
 import Article from "./pages/Article"
 import NotFound from "./pages/NotFound"
+import SearchResult from "./pages/SearchResult"
 
 const queryClient = new QueryClient()
 
@@ -31,7 +32,8 @@ const toplevelRoutes: AppRoute[] = [
 ]
 
 const subRoutes: AppRoute[] = [
-  { path: "/search/lemma/:id", Component: Article, title: "Suche" },
+  { path: "/entry/:id", Component: Article, title: "Eintrag" },
+  { path: "/query", Component: SearchResult, title: "Suchergebnis" },
 ]
 
 const routes = [...toplevelRoutes, ...subRoutes]

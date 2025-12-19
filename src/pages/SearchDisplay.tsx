@@ -4,8 +4,7 @@ import MainText from "../layout/MainText"
 export default function SearchDisplay() {
   return (
     <MainText>
-      <h1>Stichwortsuche</h1>
-
+      <h1>Freie Suche</h1>
       <LemmaSearchForm />
     </MainText>
   )

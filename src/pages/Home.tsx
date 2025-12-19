@@ -1,6 +1,6 @@
 import { BackgroundImage, Container, Title, Text } from "@mantine/core"
-import LemmaSearchForm from "../ui/LemmaSearchForm"
 import MainText from "../layout/MainText"
+import FreeSearchForm from "../ui/FreeSearchForm"
 
 function HeroSection() {
   return (
@@ -15,7 +15,7 @@ function HeroSection() {
       <Text fw="800" style={{ color: "white" }} pb="xl">
         Lexikographische Suche und Analyse
       </Text>
-      <LemmaSearchForm gap="xs" maw="24em" />
+      <FreeSearchForm gap="xs" maw="24em" />
     </BackgroundImage>
   )
 }

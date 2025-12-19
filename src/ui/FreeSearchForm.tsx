@@ -3,7 +3,7 @@ import { IconSearch } from "@tabler/icons-react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
-export default function LemmaSearchForm({ ...props }: GroupProps) {
+export default function FreeSearchForm({ ...props }: GroupProps) {
   const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState("")
 
@@ -16,7 +16,7 @@ export default function LemmaSearchForm({ ...props }: GroupProps) {
   const handleSubmit = (e: React.FormEvent<HTMLDivElement>) => {
     e.preventDefault()
     if (searchValue.trim()) {
-      navigate(`/entry/${encodeURIComponent(searchValue.trim())}`)
+      navigate(`/query?q=${encodeURIComponent(searchValue.trim())}`)
     }
   }
 
@@ -25,7 +25,7 @@ export default function LemmaSearchForm({ ...props }: GroupProps) {
       <TextInput
         rightSection={SearchButton}
         flex={1}
-        placeholder="Stichwortsuche..."
+        placeholder="Freie Suche..."
         value={searchValue}
         onChange={(e) => setSearchValue(e.currentTarget.value)}
       />

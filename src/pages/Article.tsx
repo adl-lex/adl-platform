@@ -5,7 +5,7 @@ import _ from "lodash"
 import LemmaDisplay, { LemmaNotFound } from "../ui/LemmaDisplay"
 import { useParams } from "react-router-dom"
 
-const searchLemma = async (query?: string): Promise<any> => {
+const searchLemma = async (query?: string): Promise<Entry> => {
   if (!query) {
     throw new Error(`HTTP error status: 400`)
   }
@@ -17,7 +17,7 @@ const searchLemma = async (query?: string): Promise<any> => {
   return new Entry(data)
 }
 
-export default function SearchDisplay() {
+export default function Article() {
   const { id } = useParams<{ id: string }>()
 
   const { data, isLoading } = useQuery<Entry>({
