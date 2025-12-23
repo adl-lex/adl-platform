@@ -1,7 +1,7 @@
 import { Box, List, Loader } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import _ from "lodash"
-import { LemmaNotFound } from "../ui/LemmaDisplay"
+import { LemmaNotFound } from "./LemmaDisplay"
 import { useSearchParams } from "react-router-dom"
 import Entry from "../domain/Entry"
 
@@ -33,12 +33,12 @@ function ResultList({ entries }: { entries: Entry[] }) {
 
 export default function SearchResult() {
   const [searchParams] = useSearchParams()
-  const q = searchParams.get("q")
+  const currentQuery = searchParams.get("q")
 
   const { data, isLoading } = useQuery<Entry[]>({
-    queryKey: ["search", q],
-    queryFn: () => search(q ?? undefined),
-    enabled: !!q,
+    queryKey: ["search", currentQuery],
+    queryFn: () => search(currentQuery ?? undefined),
+    enabled: !!currentQuery,
     refetchOnWindowFocus: false,
   })
 
@@ -50,7 +50,13 @@ export default function SearchResult() {
         <Loader />
       ) : (
         <>
-          {isEmpty ? <LemmaNotFound /> : <ResultList entries={data || []} />}{" "}
+          {!currentQuery ? (
+            <></>
+          ) : isEmpty ? (
+            <LemmaNotFound />
+          ) : (
+            <ResultList entries={data || []} />
+          )}{" "}
         </>
       )}
     </Box>
