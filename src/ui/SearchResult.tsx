@@ -45,20 +45,16 @@ export default function SearchResult() {
   const isEmpty = _.isEmpty(data) || _.has(data, "error")
 
   return (
-    <Box maw="800px" mx="auto" py="xl" px="md">
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          {!currentQuery ? (
-            <></>
-          ) : isEmpty ? (
-            <LemmaNotFound />
-          ) : (
-            <ResultList entries={data || []} />
-          )}{" "}
-        </>
-      )}
-    </Box>
+    currentQuery && (
+      <Box maw="800px" mx="auto" py="xl" px="md">
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            {isEmpty ? <LemmaNotFound /> : <ResultList entries={data || []} />}{" "}
+          </>
+        )}
+      </Box>
+    )
   )
 }
