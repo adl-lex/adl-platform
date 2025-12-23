@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 import _ from "lodash"
 import { LemmaNotFound } from "./LemmaDisplay"
 import { useSearchParams } from "react-router-dom"
-import Entry from "../domain/Entry"
+import { DisplayEntry } from "../domain/Entry"
 
 const search = async (query?: string): Promise<any> => {
   if (!query) {
@@ -17,11 +17,11 @@ const search = async (query?: string): Promise<any> => {
   return data
 }
 
-function ResultEntry({ entry }: { entry: Entry }) {
-  return <List.Item>{entry.form?.[0].orth}</List.Item>
+function ResultEntry({ entry }: { entry: DisplayEntry }) {
+  return <List.Item>{entry.headword}</List.Item>
 }
 
-function ResultList({ entries }: { entries: Entry[] }) {
+function ResultList({ entries }: { entries: DisplayEntry[] }) {
   return (
     <List>
       {entries.map((entry, index) => (
@@ -35,7 +35,7 @@ export default function SearchResult() {
   const [searchParams] = useSearchParams()
   const currentQuery = searchParams.get("q")
 
-  const { data, isLoading } = useQuery<Entry[]>({
+  const { data, isLoading } = useQuery<DisplayEntry[]>({
     queryKey: ["search", currentQuery],
     queryFn: () => search(currentQuery ?? undefined),
     enabled: !!currentQuery,
