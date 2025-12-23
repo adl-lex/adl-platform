@@ -1,33 +1,12 @@
 import _ from "lodash"
 import { JSX } from "react"
-import { DisplayEntry, Sense } from "../domain/Entry"
+import { DisplayEntry } from "../domain/Entry"
 import { Title, Text, List } from "@mantine/core"
 import { useParams } from "react-router-dom"
 import classes from "./LemmaDisplay.module.css"
-import classNames from "classnames"
+import DisplaySense from "./DisplaySense"
 
 type Gender = "M" | "W" | "N"
-
-export function DisplaySense({ senses }: { senses?: Sense[] }): JSX.Element {
-  return senses && senses.length > 0 ? (
-    <List>
-      {senses.map((sense, index) => (
-        <List.Item
-          key={index}
-          className={classNames({
-            [classes.numbered_sense_item]: !!sense.n,
-          })}
-          data-sense-n={`${sense.n}.`}
-        >
-          <span>{sense.def}</span>
-          {<DisplaySense senses={sense.sense} />}
-        </List.Item>
-      ))}
-    </List>
-  ) : (
-    <></>
-  )
-}
 
 export function LemmaNotFound(): JSX.Element {
   const { id } = useParams<{ id: string }>()

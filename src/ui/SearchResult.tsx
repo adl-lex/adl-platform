@@ -11,12 +11,13 @@ import {
 } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import _ from "lodash"
-import { DisplaySense, LemmaNotFound } from "./LemmaDisplay"
+import { LemmaNotFound } from "./LemmaDisplay"
 import { NavLink, useSearchParams } from "react-router-dom"
 import { DisplayEntry } from "../domain/Entry"
 import { ResourceKey, resources } from "../domain/Resource"
 import classes from "./SearchResult.module.css"
 import { IconExternalLink } from "@tabler/icons-react"
+import DisplaySense from "./DisplaySense"
 
 const search = async (query?: string): Promise<any> => {
   if (!query) {
