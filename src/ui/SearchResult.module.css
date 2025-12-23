@@ -1,9 +1,11 @@
-.item {
+.lemmalink {
+  text-decoration: none;
+  display: flex;
   &:hover {
     text-decoration: none;
-
-    > div {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-    }
   }
+}
+
+.variants {
+  font-style: italic;
 }

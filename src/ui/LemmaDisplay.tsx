@@ -8,7 +8,7 @@ import classNames from "classnames"
 
 type Gender = "M" | "W" | "N"
 
-function DisplaySense({ senses }: { senses?: Sense[] }): JSX.Element {
+export function DisplaySense({ senses }: { senses?: Sense[] }): JSX.Element {
   return senses ? (
     <List>
       {senses.map((sense, index) => (

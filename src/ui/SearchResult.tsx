@@ -7,14 +7,16 @@ import {
   Title,
   Tooltip,
   Text,
+  Group,
 } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import _ from "lodash"
-import { LemmaNotFound } from "./LemmaDisplay"
+import { DisplaySense, LemmaNotFound } from "./LemmaDisplay"
 import { NavLink, useSearchParams } from "react-router-dom"
 import { DisplayEntry } from "../domain/Entry"
 import { ResourceKey, resources } from "../domain/Resource"
 import classes from "./SearchResult.module.css"
+import { IconExternalLink } from "@tabler/icons-react"
 
 const search = async (query?: string): Promise<any> => {
   if (!query) {
@@ -32,24 +34,75 @@ function DisplayResource({ name }: { name: ResourceKey }) {
   const resource = resources[name]
   return (
     <Tooltip label={resource.displayName}>
-      <Badge size="sm" color={resource.color}>
+      <Badge variant="outline" size="xs" color={resource.color}>
         {resource.key.toUpperCase()}
       </Badge>
     </Tooltip>
   )
 }
 
+function DisplayGrammarInfo({ entry }: { entry: DisplayEntry }) {
+  return (
+    <Group mb="md">
+      {entry.pos && (
+        <Badge size="xs" variant="default" radius="xs">
+          {entry.pos}
+        </Badge>
+      )}
+      {entry.gender && (
+        <Badge size="xs" variant="default" radius="xs">
+          {entry.gender}
+        </Badge>
+      )}
+    </Group>
+  )
+}
+
+function DisplayVariants({ variants }: { variants: string[] }) {
+  return (
+    variants.length > 0 && (
+      <Text mb="md">
+        Varianten:{" "}
+        <Text className={classes.variants} span>
+          {variants.join(", ")}
+        </Text>
+      </Text>
+    )
+  )
+}
+
+function PreviewSenses({ senses }: { senses: DisplayEntry["sense"] }) {
+  return <DisplaySense senses={senses} />
+}
+
+function EntryLink({ id }: { id: string }) {
+  return (
+    <NavLink className={classes.lemmalink} to={"/entry/" + id}>
+      <IconExternalLink />
+    </NavLink>
+  )
+}
+
+function EntryHeader({ entry }: { entry: DisplayEntry }) {
+  return (
+    <Group gap={5} mb="xs">
+      <Title mt={0} mb={0} order={2}>
+        {entry.headword}
+      </Title>
+      <EntryLink id={entry["xml:id"]} />
+    </Group>
+  )
+}
+
 function ResultItem({ entry }: { entry: DisplayEntry }) {
   return (
-    <NavLink className={classes.item} to={"/entry/" + entry["xml:id"]}>
-      <Card shadow="xs" className={"item-card"}>
-        <DisplayResource name={entry.source} />
-        <Title mt={0} mb={0} order={2}>
-          {entry.headword}
-        </Title>
-        <Text>{entry.variants.join(", ")}</Text>
-      </Card>
-    </NavLink>
+    <Card shadow="xs">
+      <DisplayResource name={entry.source} />
+      <EntryHeader entry={entry} />
+      <DisplayGrammarInfo entry={entry} />
+      <DisplayVariants variants={entry.variants} />
+      <PreviewSenses senses={entry.sense} />
+    </Card>
   )
 }
 
