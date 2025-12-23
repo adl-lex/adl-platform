@@ -20,6 +20,19 @@ export default class Entry {
   }
 }
 
+export type Resource = "bwb" | "dibs" | "wbf"
+
+export interface DisplayEntry {
+  xmlId: string
+  source: Resource
+  headword: string
+  variants: string[]
+  sense?: Sense[]
+  gender: string | null
+  pos: string | null
+  number: string | null
+}
+
 export interface Form {
   type: string
   orth: string
