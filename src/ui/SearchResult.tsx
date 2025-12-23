@@ -1,9 +1,10 @@
-import { Box, List, Loader } from "@mantine/core"
+import { Badge, Box, Card, Loader, Stack, Title, Tooltip } from "@mantine/core"
 import { useQuery } from "@tanstack/react-query"
 import _ from "lodash"
 import { LemmaNotFound } from "./LemmaDisplay"
-import { useSearchParams } from "react-router-dom"
+import { NavLink, useSearchParams } from "react-router-dom"
 import { DisplayEntry } from "../domain/Entry"
+import { ResourceKey, resources } from "../domain/Resource"
 
 const search = async (query?: string): Promise<any> => {
   if (!query) {
@@ -17,17 +18,37 @@ const search = async (query?: string): Promise<any> => {
   return data
 }
 
+function DisplayResource({ name }: { name: ResourceKey }) {
+  const resource = resources[name]
+  return (
+    <Tooltip label={resource.displayName}>
+      <Badge size="sm" color={resource.color}>
+        {resource.key.toUpperCase()}
+      </Badge>
+    </Tooltip>
+  )
+}
+
 function ResultEntry({ entry }: { entry: DisplayEntry }) {
-  return <List.Item>{entry.headword}</List.Item>
+  return (
+    <NavLink to={"/entry/" + entry["xml:id"]}>
+      <Card shadow="xs">
+        <DisplayResource name={entry.source} />
+        <Title mt={0} order={2}>
+          {entry.headword}
+        </Title>
+      </Card>
+    </NavLink>
+  )
 }
 
 function ResultList({ entries }: { entries: DisplayEntry[] }) {
   return (
-    <List>
+    <Stack>
       {entries.map((entry, index) => (
         <ResultEntry key={index} entry={entry} />
       ))}
-    </List>
+    </Stack>
   )
 }
 

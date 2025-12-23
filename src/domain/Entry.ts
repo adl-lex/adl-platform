@@ -1,3 +1,5 @@
+import { ResourceKey } from "./Resource"
+
 export default class Entry {
   xmlId: string
   form?: Form[]
@@ -20,11 +22,9 @@ export default class Entry {
   }
 }
 
-export type Resource = "bwb" | "dibs" | "wbf"
-
 export interface DisplayEntry {
-  xmlId: string
-  source: Resource
+  ['xml:id']: string
+  source: ResourceKey
   headword: string
   variants: string[]
   sense?: Sense[]
