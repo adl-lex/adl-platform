@@ -43,7 +43,7 @@ function DisplayResource({ name }: { name: ResourceKey }) {
 
 function DisplayGrammarInfo({ entry }: { entry: DisplayEntry }) {
   return (
-    <Group mb="md">
+    <Group mb="md" gap={5}>
       {entry.pos && (
         <Badge size="xs" variant="default" radius="xs">
           {entry.pos}
@@ -64,7 +64,7 @@ function DisplayVariants({ variants }: { variants: string[] }) {
       <Text mb="md">
         Varianten:{" "}
         <Text className={classes.variants} span>
-          {variants.join(", ")}
+          {variants.join("; ")}
         </Text>
       </Text>
     )
@@ -96,7 +96,7 @@ function EntryHeader({ entry }: { entry: DisplayEntry }) {
 
 function ResultItem({ entry }: { entry: DisplayEntry }) {
   return (
-    <Card shadow="xs">
+    <Card shadow="md" className={classes["result-item"]}>
       <DisplayResource name={entry.source} />
       <EntryHeader entry={entry} />
       <DisplayGrammarInfo entry={entry} />

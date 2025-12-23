@@ -6,6 +6,16 @@
   }
 }
 
+.result-item > ul {
+  padding-left: 1.5em !important;
+  ul {
+    margin-bottom: 0 !important;
+  }
+  li + li {
+    margin-top: 0.5rem !important;
+  }
+}
+
 .variants {
   font-style: italic;
 }
